@@ -6,6 +6,8 @@ import (
 	"errors"
 	"math/rand"
 	"time"
+	"strings"
+	"fmt"
 )
 
 type ProxyManager struct {
