@@ -55,7 +55,7 @@ func (p *ProxyManager) NextProxy() (string, error) {
 		splitStr := strings.Split(proxy, ":")
 		proxy = fmt.Sprintf("http://%s:%s@%s:%s", splitStr[2], splitStr[3], splitStr[0], splitStr[1])
 	}
-	return proxy nil
+	return proxy, nil
 }
 
 func (p *ProxyManager) RandomProxy() (string, error) {
