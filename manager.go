@@ -50,7 +50,12 @@ func (p *ProxyManager) NextProxy() (string, error) {
 	if p.CurrentIndex > len(p.Proxies) - 1 { 
 		p.CurrentIndex = 0 //sets index to 0 if greater than length
 	}
-	return p.Proxies[p.CurrentIndex], nil
+	proxy := p.Proxies[p.CurrentIndex]
+	if len(strings.Split(proxy, ":")) == 4 {
+		splitStr := strings.Split(proxy, ":")
+		proxy = fmt.Sprintf("http://%s:%s@%s:%s", splitStr[2], splitStr[3], splitStr[0], splitStr[1])
+	}
+	return proxy nil
 }
 
 func (p *ProxyManager) RandomProxy() (string, error) {
